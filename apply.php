@@ -63,6 +63,13 @@
                 </a>
                 <span class="tooltip">Applied workshops</span>
             </li>
+            <li>
+                <a href="/portal/certificate.php">
+                    <i class='bx bx-folder'></i>
+                    <span class="links_name">Certificates</span>
+                </a>
+                <span class="tooltip">Certificates</span>
+            </li>
 
 
 
@@ -74,7 +81,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>

@@ -148,7 +148,7 @@ body {
       <form action="/portal/partials/_handlelogin.php" method="post">
       <div class="input-field">
                     <select id="role" name="role" required>
-                        <option disabled selected>Select role</option>
+                        <option value="sel">Select role</option>
                         <option value="participant">Participant</option>
                         <option value="coordinator">Co-ordinator</option>
                     </select>

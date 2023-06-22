@@ -42,6 +42,13 @@
                 </a>
                 <span class="tooltip">Post Attendence</span>
             </li>
+            <li>
+                <a href="/portal/test.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Certification</span>
+                </a>
+                <span class="tooltip">Certification</span>
+            </li>
 
 
 
@@ -53,7 +60,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>

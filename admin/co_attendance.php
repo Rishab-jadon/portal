@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.1.135/jspdf.min.js"></script>
+<script type="text/javascript" src="http://cdn.uriit.ru/jsPDF/libs/adler32cs.js/adler32cs.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js
+"></script>
+<script type="text/javascript" src="libs/Blob.js/BlobBuilder.js"></script>
+<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.addimage.js"></script>
+<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.standard_fonts_metrics.js">
+</script>
+<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.split_text_to_size.js"></script>
+<script type="text/javascript" src="http://cdn.immex1.com/js/jspdf/plugins/jspdf.plugin.from_html.js"></script>
+<script type="text/javascript" src="js/basic.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -41,6 +54,13 @@
                 </a>
                 <span class="tooltip">Post Attendence</span>
             </li>
+            <li>
+                <a href="/portal/test.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Certification</span>
+                </a>
+                <span class="tooltip">Certification</span>
+            </li>
 
 
 
@@ -52,7 +72,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>
@@ -66,6 +86,7 @@
         h2 {
             text-align: center;
         }
+
 
         input[type=text],
         select,
@@ -129,6 +150,8 @@
             padding: 20px 20px 60px;
         }
 
+      
+
         .col-25 {
             float: left;
             width: 10%;
@@ -148,98 +171,223 @@
             clear: both;
         }
 
+
+
+
         /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
         </style>
-       
-            <?php 
+        <style>
+      
+        p.big {
+            line-height: 1.8;
+        }
+        .button{
+    
+            background-color: rgb(37, 116, 161);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 44px;
+            cursor: pointer;
+            float: left;
+            position: absolute;
+            left: 1%;
+        }
 
+        .button:hover {
+            background-color: #45a049;
+        }
 
- 
-//Select query 
+        .dropbtn {
+      background-color: green;
+      color: white;
+      margin: -200px 700px 60px ;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px 14px 4px 14px;
+    }
+    
+    .dropbtn:hover {
+      background-color: brown;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      margin: -118px 719px -40px ;
+      min-width: 140px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 4px 12px;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .dropdown a:hover {
+       background-color: #ddd;
+     }
+    
+    .show {
+      display: block;
+    }
+        
+        </style>
+
+        <!-- <?php  
+            //Select query 
 
                 $conn=mysqli_connect('localhost','root','','workshop_portal');
-                $select = "SELECT * FROM applied";
+                $select = "SELECT * FROM applied WHERE applied_workshop='AI'";
                 $result = $conn->query($select);
                 ?>
-            <div class="container">
+        <div class="container">
 
+            <div id="target">
                 <style>
                 h2 {
                     text-align: center;
                 }
-                </style>
+                </style> -->
+
+<script>
+    /* methods to hide and show the dropdown content */
+    function programmingList() {
+      document.getElementById("myDropdown1").classList.toggle("show");
+    }
+    
+    
+    /* methods to redirect to tutorial page that user will select from dropdown list */
+    function AI() {
+       window.location.replace("http://localhost:8080/portal/admin/AI.php");
+    }
+    function DS() {
+       window.location.replace("http://localhost:8080/portal/admin/DS.php");
+    }
+    function OTH() {
+       window.location.replace("http://localhost:8080/portal/admin/Others.php");
+    }
+    function ML() {
+       window.location.replace("http://localhost:8080/portal/admin/ML.php");
+    }
+    
+    
+    
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
+
+                <h2>Applied for Workshops</h2>
+              
+    
+                    <div class="dropdown" >
+                        <div class="container text-center mx-50">
+                           <button onclick="programmingList()" class="dropbtn">Workshop</button>
+                        </div>
+                    <div id="myDropdown1" class="dropdown-content">
+                        <a href="#AI" onclick="AI()">AI</a>
+                        <a href="#python" onclick="ML()">Machine Learning</a>
+                        <a href="#c++" onclick="DS()">Data Science</a>
+                        <a href="#c" onclick="OTH()">Others</a>
+                    </div>
+                    </div>
 
 
-                <section>
-                    <h2>Applied for Workshops</h2>
-
-                    <table>
-
-
-                        <!-- 
-            <tr>
-                <th width='100' scope="col">Participant Name</th>
-                <th width='100' scope="col">Date of birth</th>
-                <th width='100' scope="col">Email</th>
-                <th width='100' scope="col">Gender</th>
-                <th width='100' scope="col">Phone</th>
-            </tr> -->
-
-
-
-                        <?php   
-			// Loop the employee data
-				echo '<table class="table table-bordered">';
-				while($row = $result->fetch_object()){
-					echo '<tr>'.'<th width="283" scope="col">Particpant Name</th>'
-						.'<td width="100">'.$row->applied_name.'</td>'.'</tr>'
-                        .'<tr>'.'<th class="table-head-td">Participant Email</th>'
-						.'<td width="283">'.$row->applied_email.'</td>'.'</tr>'
-                        // .'<tr>'.'<th class="table-head-td">Status</th>'
-						// .'<td width="283">'.'Present'.'</td>'.'</tr>'.'<br>';
-                        .'<tr>'.'<th width="100" scope="col">Workshop</th>'
-                         .'<td width="283">'.$row->applied_workshop.'</td>'.'</tr>'.'<br>'.'<br>';
-                        // .'<tr>'.'<th width="100" scope="col">Phone</th>'
-                        // .'<td width="283">'.$row->participant_Mno.'</td>'.'</tr>';
-				}
-				echo '</table>';
-                        ?>
+                <!-- <?php   
+                        // Loop the employee data
+                        //echo '<table class="table table-bordered">';
+                        while($row = $result->fetch_object()){
+                        echo '<b>Particpant Name:</b>'.'&nbsp'
+                        .$row->applied_name.'<br>'
+                        .'<b>Workshop:</b>'.'&nbsp'
+                        .$row->applied_workshop.'<br>'.'<p class="big"><br></p>';
+                       
+                        }
+                  
+                        ?> -->
 
 
 
 
-
-
-                    </table>
             </div>
-            <h2>Post Attendance</h2>
-            <div class="container">
-                <form action="/portal/admin/attdb.php" method="post">
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="sname">Student Name</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="text" id="sname" name="sname" placeholder="Student name..">
-                        </div>
+        </div>
+
+        <div id="editor"></div>
+        <button class= "button" id="cmd" >Download</button>
+        <!-- download pdf data -->
+        <script>
+        $(function() {
+
+            var specialElementHandlers = {
+                '#editor': function(element, renderer) {
+                    return true;
+                }
+            };
+            $('#cmd').click(function() {
+                var doc = new jsPDF();
+                doc.fromHTML(
+                    $('#target').html(), 5, 5, {
+                        'width': 120,
+                        'elementHandlers': specialElementHandlers
+                    },
+                    function() {
+                        doc.save('attendance.pdf');
+                    }
+                );
+
+            });
+        });
+        </script>
+
+        <h2>Post Attendance</h2>
+        <div class="container">
+            <form action="/portal/admin/attdb.php" method="post">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="sname">Student Name</label>
                     </div>
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="email">Student Mail Id</label>
-                        </div>
-                        <div class="col-75">
-                            <input type="email" id="email" name="email" placeholder="Student mail id..">
-                        </div>
+                    <div class="col-75">
+                        <input type="text" id="sname" name="sname" placeholder="Student name..">
                     </div>
-                    <div class="input-field">
-                        <label>Attendance</label>
-                        <input type="number" id="no" name="no" placeholder="give attendance" required>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="email">Student Mail Id</label>
                     </div>
-                    <div class="text-center">
-                        <input type="submit" value="Submit">
+                    <div class="col-75">
+                        <input type="email" id="email" name="email" placeholder="Student mail id..">
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="input-field">
+                    <label>Attendance</label>
+                    <input type="number" id="no" name="no" placeholder="give attendance" required>
+                </div>
+                <div class="text-center">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
     </section>
     <script>
     let sidebar = document.querySelector(".sidebar");

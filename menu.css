@@ -215,7 +215,7 @@
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  background: #1d1b31;
+  background: #cbcbcc;
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -224,7 +224,7 @@
 }
 .sidebar.open .profile #log_out{
   width: 50px;
-  background: none;
+  background: rgb(107, 109, 109);
 }
 .home-section{
   position: absolute;

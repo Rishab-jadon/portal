@@ -41,6 +41,13 @@
                 </a>
                 <span class="tooltip">Post Attendence</span>
             </li>
+            <li>
+                <a href="/portal/test.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Certification</span>
+                </a>
+                <span class="tooltip">Certification</span>
+            </li>
 
 
             <li class="profile">
@@ -51,7 +58,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>
@@ -147,6 +154,22 @@ $result = $conn->query($select);
 
 
                 </table>
+                <style>
+                    .update-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin:10px 92%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+                    </style>
+                <button class="update-button"><a href="/portal/admin/co-editupdate.php">Update</a></button>
             </section>
 
 

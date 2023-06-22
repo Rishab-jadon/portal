@@ -56,6 +56,13 @@
                 </a>
                 <span class="tooltip">Applied workshops</span>
             </li>
+            <li>
+                <a href="/portal/certificate.php">
+                    <i class='bx bx-folder'></i>
+                    <span class="links_name">Certificates</span>
+                </a>
+                <span class="tooltip">Certificates</span>
+            </li>
 
 
 
@@ -67,7 +74,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>
@@ -162,6 +169,22 @@ $result = $conn->query($select);
 
 
                 </table>
+                <style>
+                    .update-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin:10px 92%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+                    </style>
+                <button class="update-button"><a href="/portal/edit-update.php">Update</a></button>
             </section>
 
 

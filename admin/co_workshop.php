@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/portal/menu.css">
-
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -41,6 +40,13 @@
                 </a>
                 <span class="tooltip">Post Attendence</span>
             </li>
+            <li>
+                <a href="/portal/test.php">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Certification</span>
+                </a>
+                <span class="tooltip">Certification</span>
+            </li>
 
 
 
@@ -52,7 +58,7 @@
                         <div class="job">Web designer</div>
                     </div>
                 </div>
-                <i class='bx bx-log-out' id="log_out"></i>
+                <a href="/portal/admin/_logout.php" class='bx bx-log-out' id="log_out"></a>
             </li>
         </ul>
     </div>
@@ -144,29 +150,31 @@
             <h2 class="text-center my-3">Workshops</h2>
             <div class="row">
                 <?php
-            $conn=mysqli_connect('localhost','root','','workshop_portal');
-            $sql='select * from workshop';
-            $result=mysqli_query($conn,$sql);
-            while($row=mysqli_fetch_assoc($result)){
-                echo ' <div class="col-md-2 my-1">
-                <div class="card" style="width: 18rem;">
-                    
-                    <div class="card-body">
-                    
-                    <h3 class="card-title">'.$row['workshop_name'].'<a href="/portal/admin/delete.php?wid='.$row['workshop_id'].'"> Delete</a></h3>
-                    <h4 class="card-title">End Date '.$row['workshop_date'].'</h4>
-                        
-                        <br>
-                        </div>
-                    </div>
-                </div>';
+                    $conn=mysqli_connect('localhost','root','','workshop_portal');
+                    $sql='select * from workshop';
+                    $result=mysqli_query($conn,$sql);
+                    while($row=mysqli_fetch_assoc($result)){
+                        echo ' <div class="col-md-2 my-1">
+                        <div class="card" style="width: 18rem;">
+                            
+                            <div class="card-body">
+                            
+                            <h3 class="card-title">'.$row['workshop_name'].'<a href="/portal/admin/delete.php?wid='.$row['workshop_id'].'"> Delete</a></h3>
+                            <h4 class="card-title">End Date '.$row['workshop_date'].'</h4>
+                                
+                                <br>
+                                </div>
+                            </div>
+                        </div>';
 
 
-            }
+                     }
             
-            ?>
+                ?>
             </div>
         </div>
+  
+
         <h2>Create Workshop </h2>
         <div class="container">
             <form action="/portal/admin/wdb.php" method="post">
